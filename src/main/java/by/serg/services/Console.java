@@ -112,7 +112,7 @@ public class Console {
 
     public static void printResults() {
         System.out.println("    Results: ");
-        Crawler.getKeyWordsHits().forEach((keyWord, hitsNumber) -> System.out.println(keyWord + " : " + hitsNumber + " ;"));
+        Crawler.getKeyWordsHits().forEach((keyWord, hitsNumber) -> System.out.println(keyWord + " : " + hitsNumber + ";"));
         System.out.println("    Total hits: " + Crawler.getTotalHits());
 
     }
@@ -121,14 +121,16 @@ public class Console {
         System.out.println("   Type key word and press ENTER to add (Current words will be deleted). Type EXIT to return");
         Set<String> keyWords = new HashSet<>();
         while (true) {
-            String input = defaultScanner.next();
+            String input = defaultScanner.nextLine();
             if (input.equals("EXIT") && !keyWords.isEmpty()) {
                 Crawler.setKeyWords(keyWords);
                 return;
             } else if (input.equals("EXIT")) {
                 return;
             }
-            keyWords.add(input);
+            if(!input.equals("")) {
+                keyWords.add(input);
+            }
         }
     }
 

@@ -1,9 +1,6 @@
 package by.serg.bean;
 
-
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.ResourceLock;
-
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -220,6 +217,8 @@ class CrawlerTest {
     void checkDocumentTextForKeyWords() {
         Crawler crawler = new Crawler();
         Set<String> testSet = new HashSet<>(Arrays.asList("A", "B", "C", "D"));
+        Crawler.setKeyWordsHits(new HashMap<>());
+        Crawler.setTotalHits(0);
         Map<String, Integer> expectedMap = new HashMap<>() {
             {
                 put("A", 4);
@@ -256,6 +255,8 @@ class CrawlerTest {
     @Test
     void crawl() {
         Crawler crawler = new Crawler();
+        Crawler.setKeyWordsHits(new HashMap<>());
+        Crawler.setTotalHits(0);
         Set<String> testSet = new HashSet<>(Arrays.asList("Musk", "Elon Mask", "Tesla", "Gigafactory"));
         Map<String, Integer> expectedMap = new HashMap<>() {
             {
